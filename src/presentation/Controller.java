@@ -7,11 +7,22 @@ public class Controller {
         this.menu=menu;
     }
 
-    private void run(){
-        char option;
-        boolean stop;
+    public void run(){
+        int option;
 
-        menu.();
+        menu.showWelcome();
+
+        do{
+            menu.showMenu();
+            option = menu.askForOption();
+
+            if(option > 5){
+                menu.errorMessage();
+            }
+        }while (option != 5);
+
+        menu.exitMessage();
+
     }
 }
 

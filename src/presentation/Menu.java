@@ -10,8 +10,8 @@ public class Menu {
     }
 
     public void showWelcome(){
-        System.out.println("Welcome to Simple LSRPG.");
-        System.out.println("\nLoading data...");
+        System.out.println("Welcome to Simple LSRPG.\n");
+        System.out.println("Loading data...");
     }
     public void showMenu(){
         System.out.println("The tavern keeper looks at you and says:");
@@ -23,5 +23,36 @@ public class Menu {
         System.out.println("5) Exit");
     }
 
+    public void showLoaded(){
+        System.out.println("Data was successfully loaded.");
+    }
+
+    public void showNotLoadedMonsters(){
+        System.out.println("Error: The monsters.json file can’t be accessed.");
+    }
+    public void showNotLoadedCharacters(){
+        System.out.println("Error: The characters.json file can’t be accessed.");
+    }
+    public void showNotLoadedAdventure(){
+        System.out.println("Error: The adventure.json file can’t be accessed.");
+    }
+
+    public int askForOption (){
+        int number;
+        System.out.print("Your answer: ");
+        number = scanner.nextInt();
+        System.out.println();
+        return number;
+    }
+    public void errorMessage(){
+        System.out.println("Try another number");
+    }
+
+    public void exitMessage(){
+        System.out.println("Tavern keeper: “Are you leaving already? See you soon, adventurer.”");
+    }
+    public void showMessageError(String message){
+        System.out.println(message);
+    }
 
 }
