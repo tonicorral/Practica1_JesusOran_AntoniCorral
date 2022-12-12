@@ -9,6 +9,10 @@ public class Menu {
         this.scanner = new Scanner(System.in);
     }
 
+    public void showWelcome(){
+        System.out.println("Welcome to Simple LSRPG.");
+        System.out.println("\nLoading data...");
+    }
     public void showMenu(){
         System.out.println("The tavern keeper looks at you and says:");
         System.out.println("“Welcome adventurer! How can I help you?”\n");
