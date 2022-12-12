@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Menu {
     private Scanner scanner;
+    private String message;
 
     public Menu() {
         this.scanner = new Scanner(System.in);
@@ -20,11 +21,7 @@ public class Menu {
         System.out.println("2) List characters");
         System.out.println("3) Create an adventure");
         System.out.println("4) Start an adventure");
-        System.out.println("5) Exit");
-    }
-
-    public void showLoaded(){
-        System.out.println("Data was successfully loaded.");
+        System.out.println("5) Exit\n");
     }
 
     public void showNotLoadedMonsters(){
@@ -37,22 +34,19 @@ public class Menu {
         System.out.println("Error: The adventure.json file can’t be accessed.");
     }
 
-    public int askForOption (){
-        int number;
-        System.out.print("Your answer: ");
-        number = scanner.nextInt();
-        System.out.println();
-        return number;
-    }
-    public void errorMessage(){
-        System.out.println("Try another number");
+    public int askForInt (){
+        return scanner.nextInt();
     }
 
-    public void exitMessage(){
-        System.out.println("Tavern keeper: “Are you leaving already? See you soon, adventurer.”");
+    public void showMessage(String message){
+            System.out.print(message);
     }
-    public void showMessageError(String message){
-        System.out.println(message);
+
+    public String askForString(){
+        return scanner.nextLine();
     }
+
+
+
 
 }

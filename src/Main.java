@@ -9,7 +9,7 @@ public class Main {
             Controller controller = new Controller(menu);
             controller.run();
         } catch (Exception e){
-            menu.showMessageError(e.getMessage());
+            menu.showMessage(e.getMessage());
         }
 
     }
