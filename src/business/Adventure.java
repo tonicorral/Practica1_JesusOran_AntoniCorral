@@ -6,4 +6,6 @@ public class Adventure {
     private Monster monster;
     private Character character;
     private Combat[] combat;
+
+
 }

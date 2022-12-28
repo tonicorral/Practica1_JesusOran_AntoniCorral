@@ -1,10 +1,13 @@
 package persistence;
 
-import business.Character;
+
 import business.Monster;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public interface MonsterDAO {
-    List<Monster> readAll();
+    List <Monster> readAll() throws FileNotFoundException;
+
+
 }

@@ -1,5 +1,6 @@
 package presentation;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -43,7 +44,24 @@ public class Menu {
     }
 
     public String askForString(){
+
         return scanner.nextLine();
+    }
+    public int askForAnOption(int max, int min) {
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            try {
+                int option = Integer.parseInt(scanner.nextLine());
+                if (option < min || option > max) {
+                    System.out.println("\nPlease input a number between " + min + " and " + max + "\n");
+                    showMessage("Again: ");
+                } else {
+                    return option;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nPlease input a number\n");
+            }
+        }
     }
 
 

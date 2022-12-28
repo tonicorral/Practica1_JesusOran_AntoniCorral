@@ -1,17 +1,23 @@
 package presentation;
+import business.*;
+
 import java.lang.Math;
 
 public class Controller {
     private Menu menu;
+    private CharacterManager cm;
+    private CombatManager ctm;
+    private MonsterManager mm;
+    private AdventureManager am;
 
-    public Controller(Menu menu){
-        this.menu=menu;
+    public Controller(Menu menu, CharacterManager cm) {
+        this.menu = menu;
+        this.cm = cm;
     }
 
     public void run() {
         int option;
         boolean stop;
-
         menu.showWelcome();
         if (true) {
             menu.showMessage("Data was successfully loaded.\n");
@@ -19,7 +25,7 @@ public class Controller {
             do {
                 menu.showMenu();
                 menu.showMessage("Your answer: ");
-                option = menu.askForInt();
+                option = menu.askForAnOption(5, 1);
                 menu.showMessage("\n");
                 stop = optionRun(option);
 
@@ -30,6 +36,7 @@ public class Controller {
             menu.showMessage("Error loading");
         }
     }
+
 
     private boolean optionRun(int option){
         switch (option){
@@ -57,22 +64,28 @@ public class Controller {
         int level;
         menu.showMessage("Tavern keeper: “Oh, so you are new to this land.”\n");
         menu.showMessage("“What’s your name?”\n\n");
+
         menu.showMessage("-> Enter your name: ");
         name = menu.askForString();
+        cm.createCharacter(name);
         menu.showMessage("Tavern keeper: “Hello,"+ name +", be welcome.\n");
         menu.showMessage("“And now, if I may break the fourth wall, who is your Player?”\n\n");
+
         menu.showMessage("-> Enter the player’s name: ");
         playerName = menu.askForString();
-       // menu.showMessage(playerName);
+        cm.createPlayerName(playerName);
+        menu.showMessage(playerName);
+
         menu.showMessage("\nTavern keeper: “I see, I see...”");
         menu.showMessage("\n“Now, are you an experienced adventurer?”\n");
         menu.showMessage("\n-> Enter the character’s level [1..10]: ");
-        level = menu.askForInt();
+        level = menu.askForAnOption(10, 1);
+        cm.createIncialLevel(level);
         menu.showMessage("\nTavern keeper: “Oh, so you are level "+level+"!”");
         menu.showMessage("\n“Great, let me get a closer look at you...”\n");
         menu.showMessage("\nGenerating your stats...\n\n");
 
-        int num = (int)(Math.random()*10+1);
+
 
         return true;
     }
@@ -103,11 +116,11 @@ public class Controller {
         menu.showMessage("Spirit: ");
 
         menu.showMessage("[Enter name to delete, or press enter to cancel]");
-        menu.showMessage("Do you want to delete "++"?");
+      //  menu.showMessage("Do you want to delete "++"?");
 
         menu.showMessage("Tavern keeper: “I’m sorry kiddo, but you have to leave.”");
 
-        menu.showMessage("Character "++" left the Guild.");
+        //menu.showMessage("Character "++" left the Guild.");
         return true;
     }
 
